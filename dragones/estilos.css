@@ -1,0 +1,142 @@
+body{
+    padding: 0;
+    margin: 0;
+    background-color: #bababa;
+    font-size: small;
+}
+
+
+/*encabezado*/
+.head-page{
+    background-color: #154360;
+    display: inline-block;
+    width: 100vw;
+    overflow: hidden;
+}
+.head-page > label{
+    padding: 3px 5px;
+    width: 30vw;
+    float: left;
+    overflow: hidden;
+    height: 3vh;
+    font-weight: bold;
+}
+.head-page > div{
+    width: 50vw;
+    float: right;
+    background-color: rgba(255, 255, 255, 0.3);
+    border: 1px solid #000;
+    overflow: hidden;
+    padding: 3px 5px;
+    height: 3vh;
+    margin: 2px;
+    border-radius: 3px;
+}
+.head-page > div > form > label{
+    font-weight: bold;
+}
+.head-page > div > form > input{
+    border: none;
+    border-radius: 3px;
+    width: 10vw;
+    text-align: center;
+}
+.head-page > div > form > button{
+    border: 1px solid #4682B4;
+    padding: 2px;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: #FFF;
+    font-size: smaller;
+}
+
+
+/*barra de navegacion*/
+.nav-radio{
+    width: 100vw;
+    display: inline-block;
+    text-align: center;
+}
+.nav-radio a{
+    display: inline-block;
+    background-color: #c6c3c3;
+    width: 15vw;
+    padding: 1px 5px;
+    overflow: hidden;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.nav-radio a:hover{
+    background-color: #4682B4;
+}
+/*btn seleccionado*/
+.selec{
+    background-color: rgb(52, 174, 255);
+}
+
+/* cuerpo de la pagina*/
+.list-drag{
+    background-color: #e5e5e5;
+    padding: 3px;
+    width: 96vw;
+    margin: 5px;
+    border-radius: 3px;
+}
+.resultDrag{
+    background-color: rgba(255, 255, 255, 0.3);
+    margin: 1px 0;
+    width: 95vw;
+    padding: 1px;
+    border-radius: 5px;
+    display: inline-block;
+}
+.resultDrag label{
+    font-weight: bold;
+    width: 10vw;
+    display: inline-block;
+    overflow: hidden;
+    font-weight: bold;
+}
+.resultDrag select{
+    appearance: none;
+    text-align: center;
+    border: none;
+    padding: 2px;
+    border-radius: 3px;
+    width: 17vw;
+    margin: 0 2px;
+    font-size: smaller;
+    text-transform: capitalize;
+}
+.resultDrag select option{
+    background-color: #FFF;
+    color: #000;
+    text-transform: capitalize;
+}
+.resultDrag input{
+    border: none;
+    padding: 2px;
+    border-radius: 3px;
+    width: 47vw;
+    text-transform: capitalize;
+    font-size: smaller;
+}
+.Inactivo{
+    background-color: red;
+    font-weight: bold;
+    color: #FFF;
+}
+.activo{
+    background-color: rgb(0, 184, 0);
+    font-weight: bold;
+    color: #FFF;
+}
+.recorrido{
+    background-color: rgb(255, 153, 0);
+    font-weight: bold;
+    color: #FFF;
+}.operativo{
+    background-color: rgb(72, 72, 252);
+    font-weight: bold;
+    color: #FFF;
+}

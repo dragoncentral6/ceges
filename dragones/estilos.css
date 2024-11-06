@@ -12,7 +12,6 @@ body{
     display: inline-block;
     width: 100vw;
     overflow: hidden;
-    color: #FFF;
 }
 .head-page > label{
     padding: 3px 5px;
@@ -21,6 +20,7 @@ body{
     overflow: hidden;
     height: 3vh;
     font-weight: bold;
+    color: #FFF;
 }
 .head-page > div{
     width: 50vw;

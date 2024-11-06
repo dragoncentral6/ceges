@@ -46,10 +46,6 @@ const posicionEstado = [
 ];
 
 
-
-
-
-
 //guardar datos
 formulario.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -59,14 +55,14 @@ formulario.addEventListener('submit', (e) => {
     const posicion = "-"; 
     const descripcion = "";
 
-    crear(alias.value, estado, posicion, descripcion);
-    //console.log(alias.value, estado, posicion, descripcion);
-    console.log("grua creada");
-        
-    formulario.reset();
-    
+    if(alias.value != ""){
+        crear(alias.value, estado, posicion, descripcion);
+        console.log("grua creada");
+        formulario.reset();
+    }else{
+        console.log("por favor llenar el campo del alias");
+    }
 });
-
 
 window.addEventListener('DOMContentLoaded', async() => {
         cargar("all");   
@@ -106,11 +102,8 @@ window.addEventListener('DOMContentLoaded', async() => {
         });
         
         function cargar(params="all") {
-            
                 
             cambios((listado) =>{
-                //let html = "";
-
                 listdisplay.innerHTML = "";
 
                 const listadoDragones = [];

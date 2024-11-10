@@ -99,6 +99,7 @@ body{
     font-weight: bold;
 }
 .resultDrag select{
+    background-color: #FFF;
     appearance: none;
     text-align: center;
     border: none;

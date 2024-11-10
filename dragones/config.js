@@ -152,8 +152,7 @@ window.addEventListener('DOMContentLoaded', async() => {
 
 
                     if (params === paramsDrag.Estado) {
-                        console.log("los datos son: "+params)
-
+                        
                     //añadir clases de los estilos
 
                     div.classList.add("resultDrag");
@@ -161,12 +160,10 @@ window.addEventListener('DOMContentLoaded', async() => {
                     selectPosicion.classList.add("posicion-grua");
                     comentario.classList.add("coment-grua");
 
-
                     //se asignan los datos al label y al input
                     labelAlias.textContent =  paramsDrag.Alias;
                     comentario.value = paramsDrag.Descripcion;
                     comentario.setAttribute("data-id", paramsDrag.id);
-
 
                     // crear los select y pasarle los datos
                     
@@ -239,12 +236,10 @@ window.addEventListener('DOMContentLoaded', async() => {
                     selectPosicion.classList.add("posicion-grua");
                     comentario.classList.add("coment-grua");
 
-
                     //se asignan los datos al label y al input
                     labelAlias.textContent =  paramsDrag.Alias;
                     comentario.value = paramsDrag.Descripcion;
                     comentario.setAttribute("data-id", paramsDrag.id);
-
 
                     // crear los select y pasarle los datos
                     
@@ -381,8 +376,4 @@ window.addEventListener('DOMContentLoaded', async() => {
         }
 });
 
-
 //local Storage para los comentarios
-
-
-

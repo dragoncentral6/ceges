@@ -50,6 +50,12 @@ body{
     background-color: #FFF;
     font-size: smaller;
 }
+.head-page > div > form > button:hover{
+    box-shadow: 0px 0px 3px #FFF;
+    background-color: #6495ED;
+    border-color: #6495ED;
+    color: #FFF;
+}
 
 
 /*barra de navegacion*/
@@ -99,7 +105,6 @@ body{
     font-weight: bold;
 }
 .resultDrag select{
-    background-color: #FFF;
     appearance: none;
     text-align: center;
     border: none;

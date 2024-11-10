@@ -41,9 +41,6 @@ body{
     width: 10vw;
     text-align: center;
 }
-.head-page > div > form > input:focus{
-    border-color: #4682B4;
-}
 .head-page > div > form > button{
     border: 1px solid #4682B4;
     padding: 2px;

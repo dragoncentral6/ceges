@@ -3,6 +3,7 @@ body{
     margin: 0;
     background-color: #bababa;
     font-size: small;
+    font-family: Calibri;
 }
 
 /*encabezado*/
@@ -20,6 +21,7 @@ body{
     height: 3vh;
     font-weight: bold;
     color: #FFF;
+    font-family: Calibri;
 }
 .head-page > div{
     width: 50vw;
@@ -34,12 +36,14 @@ body{
 }
 .head-page > div > form > label{
     font-weight: bold;
+    font-family: Calibri;
 }
 .head-page > div > form > input{
     border: none;
     border-radius: 3px;
     width: 10vw;
     text-align: center;
+    font-family: Calibri;
 }
 .head-page > div > form > button{
     border: 1px solid #4682B4;
@@ -47,7 +51,8 @@ body{
     font-weight: bold;
     border-radius: 5px;
     background-color: #FFF;
-    font-size: smaller;
+    font-size: small;
+    font-family: Calibri;
 }
 .head-page > div > form > button:hover{
     box-shadow: 0px 0px 3px #FFF;

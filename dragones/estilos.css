@@ -53,6 +53,7 @@ body{
     background-color: #FFF;
     font-size: small;
     font-family: Calibri;
+    transition: 0.5s;
 }
 .head-page > div > form > button:hover{
     box-shadow: 0px 0px 3px #FFF;

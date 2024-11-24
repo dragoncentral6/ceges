@@ -119,6 +119,7 @@ body{
     margin: 0 2px;
     font-size: smaller;
     text-transform: capitalize;
+    cursor: pointer;
 }
 .resultDrag select option{
     background-color: #FFF;

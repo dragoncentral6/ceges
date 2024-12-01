@@ -27,7 +27,7 @@ body{
     width: 50vw;
     float: right;
     background-color: rgba(255, 255, 255, 0.3);
-    border: 1px solid #000;
+    
     overflow: hidden;
     padding: 3px 5px;
     height: 3vh;

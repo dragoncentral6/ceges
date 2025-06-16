@@ -114,7 +114,7 @@ body{
     border-radius: 25% 10%;
 }
 .resultDrag abbr:hover{
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 .resultDrag abbr[title]{
     text-decoration: none;

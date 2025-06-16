@@ -111,6 +111,12 @@ body{
     font-weight: bold;
     cursor: pointer;
 }
+.resultDrag abbr:hover{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+.resultDrag abbr[title]{
+    text-decoation:none;
+}
 .resultDrag select{
     appearance: none;
     text-align: center;

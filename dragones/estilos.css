@@ -86,6 +86,7 @@ body{
     background-color: rgb(52, 174, 255);
 }
 
+
 /* cuerpo de la pagina*/
 .list-drag{
     background-color: #e5e5e5;
@@ -102,7 +103,7 @@ body{
     border-radius: 5px;
     display: inline-block;
 }
-.resultDrag label{
+.resultDrag abbr{
     font-weight: bold;
     width: 10vw;
     display: inline-block;

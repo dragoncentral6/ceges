@@ -112,6 +112,7 @@ body{
     cursor: pointer;
     text-decoration: none;
     border-radius: 25% 10%;
+    transition: background-color 2s;
 }
 .resultDrag abbr:hover{
     background-color: rgba(0, 0, 0, 0.3);

@@ -33,8 +33,8 @@ const nameTablebd = "dragones";
 
 
 //guardar datos
-export const crear = (Alias, Estado, Posicion, Descripcion) => { 
-    addDoc(collection(db, nameTablebd),{Alias, Estado, Posicion, Descripcion});
+export const crear = (Alias, Placas, Estado, Posicion, Descripcion) => { 
+    addDoc(collection(db, nameTablebd),{Alias, Placas, Estado, Posicion, Descripcion});
 }  
 
 export const cambios = (callback) => onSnapshot(collection(db, nameTablebd), callback);

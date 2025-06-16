@@ -51,12 +51,13 @@ formulario.addEventListener('submit', (e) => {
     e.preventDefault();
     
     const alias = formulario["alias"];
+    const placas = formulario["placa"];//
     const estado = "Inactivo";
     const posicion = "-"; 
     const descripcion = "";
 
     if(alias.value != ""){
-        crear(alias.value, estado, posicion, descripcion);
+        crear(alias.value, placas.value, estado, posicion, descripcion);
         console.log("grua creada");
         formulario.reset();
     }else{

@@ -111,7 +111,7 @@ body{
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
-    border-radius: 10% 30% 50% 70%;
+    border-radius: 25% 10%;
 }
 .resultDrag abbr:hover{
     background-color: rgba(0, 0, 0, 0.3);

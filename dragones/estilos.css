@@ -118,7 +118,6 @@ body{
 }
 .resultDrag abbr[title]{
     text-decoration: none;
-    background-color: rgba(0, 0, 0, 0.1);
 }
 .resultDrag select{
     appearance: none;

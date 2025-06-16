@@ -145,7 +145,9 @@ window.addEventListener('DOMContentLoaded', async() => {
                     //aqui creamos los elementos
                     const div = document.createElement("div");
 
-                    const labelAlias = document.createElement("label");//creando el label
+                    //const labelAlias = document.createElement("label");//creando el label
+
+                    const etiqAlias = document.createElement("abbr");// creando el abbr etiquetado
                     const selectEstado = document.createElement("select");// creando los select
                     const selectPosicion = document.createElement("select");//
                     const comentario = document.createElement("input");//creando input comentarios
@@ -161,7 +163,11 @@ window.addEventListener('DOMContentLoaded', async() => {
                     comentario.classList.add("coment-grua");
 
                     //se asignan los datos al label y al input
-                    labelAlias.textContent =  paramsDrag.Alias;
+                    //labelAlias.textContent =  paramsDrag.Alias;
+
+                    etiqAlias.textContent = paramsDrag.Alias;
+                    etiqAlias.setAttribute("title", paramsDrag.Placa);
+                        
                     comentario.value = paramsDrag.Descripcion;
                     comentario.setAttribute("data-id", paramsDrag.id);
 
@@ -219,7 +225,7 @@ window.addEventListener('DOMContentLoaded', async() => {
                     }
 
                     //Añadimos los elementos al Html
-                    div.appendChild(labelAlias);
+                    div.appendChild(etiqAlias);
                     div.appendChild(selectEstado);
                     div.appendChild(selectPosicion);
                     div.appendChild(comentario);
@@ -237,7 +243,12 @@ window.addEventListener('DOMContentLoaded', async() => {
                     comentario.classList.add("coment-grua");
 
                     //se asignan los datos al label y al input
-                    labelAlias.textContent =  paramsDrag.Alias;
+                    //labelAlias.textContent =  paramsDrag.Alias;
+
+                    //se crea etiqueta para mostrar el alias
+                    etiqAlias.textContent = paramsDrag.Alias;
+                    etiqAlias.setAttribute("title", paramsDrag.Placa)
+                    
                     comentario.value = paramsDrag.Descripcion;
                     comentario.setAttribute("data-id", paramsDrag.id);
 
@@ -295,7 +306,7 @@ window.addEventListener('DOMContentLoaded', async() => {
                     }
 
                     //Añadimos los elementos al Html
-                    div.appendChild(labelAlias);
+                    div.appendChild(etiqAlias);
                     div.appendChild(selectEstado);
                     div.appendChild(selectPosicion);
                     div.appendChild(comentario);

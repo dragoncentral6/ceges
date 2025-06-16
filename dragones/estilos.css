@@ -109,6 +109,7 @@ body{
     display: inline-block;
     overflow: hidden;
     font-weight: bold;
+    cursor: pointer;
 }
 .resultDrag select{
     appearance: none;

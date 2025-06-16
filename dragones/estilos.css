@@ -110,12 +110,14 @@ body{
     overflow: hidden;
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
+    border-radius: 10% 30% 50% 70%;
 }
 .resultDrag abbr:hover{
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 .resultDrag abbr[title]{
-    text-decoation:none;
+    text-decoration: none;
 }
 .resultDrag select{
     appearance: none;

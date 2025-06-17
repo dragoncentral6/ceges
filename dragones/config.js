@@ -52,7 +52,7 @@ formulario.addEventListener('submit', (e) => {
     
     const alias = formulario["alias"];
     const placasM = formulario["placa"];
-    const placas = placasM.toString().toUpperCase();
+    const placas = placasM.value;
     const estado = "Inactivo";
     const posicion = "-"; 
     const descripcion = "";

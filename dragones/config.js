@@ -51,17 +51,20 @@ formulario.addEventListener('submit', (e) => {
     e.preventDefault();
     
     const alias = formulario["alias"];
-    const placas = formulario["placa"];//
+    const placasM = formulario["placa"];
+    const placas = placasM.toUpperCase();
     const estado = "Inactivo";
     const posicion = "-"; 
     const descripcion = "";
 
     if(alias.value != ""){
-        crear(alias.value, placas.value, estado, posicion, descripcion);
+        //crear(alias.value, placas.value, estado, posicion, descripcion);
+        console.log(alias);
+        console.log(placas);
         console.log("grua creada");
-        formulario.reset();
+        //formulario.reset();
     }else{
-        console.log("por favor llenar el campo del alias");
+        console.log("por favor llenar todos los campos");
     }
 });
 

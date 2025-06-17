@@ -57,12 +57,10 @@ formulario.addEventListener('submit', (e) => {
     const posicion = "-"; 
     const descripcion = "";
 
-    if(alias.value != ""){
-        //crear(alias.value, placas.value, estado, posicion, descripcion);
-        console.log(alias);
-        console.log(placas);
+    if(alias.value != "" || placas != ""){
+        crear(alias.value, placas, estado, posicion, descripcion);
         console.log("grua creada");
-        //formulario.reset();
+        formulario.reset();
     }else{
         console.log("por favor llenar todos los campos");
     }

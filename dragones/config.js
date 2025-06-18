@@ -80,6 +80,10 @@ window.addEventListener('DOMContentLoaded', async() => {
             e.preventDefault();
             cargar("all");
             btnAll.classList.add("selec");
+            btnIn.classList.remove("selec");
+            btnAc.classList.remove("selec");
+            btnOp.classList.remove("selec");
+            btnRe.classList.remove("selec");
         });
         
         btnIn.addEventListener("click", e =>{

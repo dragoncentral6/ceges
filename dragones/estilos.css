@@ -71,7 +71,7 @@ body{
 }
 .nav-radio a{
     display: inline-block;
-    background-color: #c6c3c3;
+    //background-color: #c6c3c3;
     width: 15vw;
     padding: 1px 5px;
     overflow: hidden;

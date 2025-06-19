@@ -90,21 +90,37 @@ window.addEventListener('DOMContentLoaded', async() => {
             e.preventDefault();
             cargar("Inactivo");
             btnIn.classList.add("selec");
+            btnAll..classList.remove("selec");
+            btnAc.classList.remove("selec");
+            btnOp.classList.remove("selec");
+            btnRe.classList.remove("selec");
         });
         btnAc.addEventListener("click", e =>{
             e.preventDefault();
             cargar("activo");
             btnAc.classList.add("selec");
+            btnAll..classList.remove("selec");
+            btnIn.classList.remove("selec");
+            btnOp.classList.remove("selec");
+            btnRe.classList.remove("selec");
         });
         btnOp.addEventListener("click", e =>{
             e.preventDefault();
             cargar("operativo");
             btnOp.classList.add("selec");
+            btnAll..classList.remove("selec");
+            btnIn.classList.remove("selec");
+            btnAc.classList.remove("selec");
+            btnRe.classList.remove("selec");
         });
         btnRe.addEventListener("click", e =>{
             e.preventDefault();
             cargar("recorrido");
             btnRe.classList.add("selec");
+            btnAll..classList.remove("selec");
+            btnIn.classList.remove("selec");
+            btnAc.classList.remove("selec");
+            btnOp.classList.remove("selec");
         });
         
         function cargar(params="all") {

@@ -2,7 +2,7 @@ import { db } from './firebase-config.js';
 import { collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
 // Inicializar el Mapa (Centrado por defecto, ej: Colombia)
-const map = L.map('map', { zoomControl: false }).setView([4.6097, -74.0817], 6);
+const map = L.map('map', { zoomControl: false }).setView([3.43722, -76.52250], 6);
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 
 // Capa de mapa (OpenStreetMap)

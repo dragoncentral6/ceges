@@ -16,9 +16,7 @@ const app = initializeApp(firebaseConfig);
 // 2. Inicializar Firestore configurando de forma estricta el uso de pestañas estables (Evita el error QUIC)
 const db = initializeFirestore(app, {
     experimentalForceLongPolling: true, // 👈 Esto fuerza una conexión estable libre de errores de protocolo QUIC
-    localCache: persistentLocalCache({
-        tabManager: persistentMultipleTabManager()
-    })
+    
 });
 
 export { db };

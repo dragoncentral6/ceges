@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoreo de Grúas | Panel Mínimo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <aside id="sidebar">
+        <header>
+            <h2>Módulo Grúas</h2>
+            <p>Monitoreo en tiempo real</p>
+        </header>
+        <div id="lista-gruas">
+            <p class="placeholder">Esperando señales de Firebase...</p>
+        </div>
+    </aside>
+
+    <main id="map"></main>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script type="module" src="firebase-config.js"></script>
+    <script type="module" src="app.js"></script>
+    <script type="module" src="simulador.js"></script>
+</body>
+</html>

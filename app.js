@@ -109,7 +109,7 @@ onSnapshot(gruasRef, (snapshot) => {
             // Ajustar encuadre general en el mapa al registrar dispositivos iniciales
             const todasLasCoordenadas = Object.values(datosGruas).map(g => [g.lat, g.lng]);
             if (todasLasCoordenadas.length > 0) {
-                map.fitBounds(todasLasCoordenadas, { maxZoom: 14, padding: [40, 40] });
+                map.fitBounds(todasLasCoordenadas, { maxZoom: 14, padding: [50, 50] });
             }
         }
     });

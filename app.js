@@ -23,8 +23,6 @@ const crearIconoGrua = (rumbo) => {
                 <path d="M20 8h-3V4H4c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM7 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0.67 1.5 1.5-.67 1.5-1.5 1.5zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0.67 1.5 1.5-.67 1.5-1.5 1.5zM15 12H4V6h11v6z"/>
             </svg>
         `,
-        iconSize:,
-        iconAnchor:,
         popupAnchor: [0, -16]
     });
 };
@@ -109,7 +107,7 @@ onSnapshot(gruasRef, (snapshot) => {
             // Ajustar encuadre general en el mapa al registrar dispositivos iniciales
             const todasLasCoordenadas = Object.values(datosGruas).map(g => [g.lat, g.lng]);
             if (todasLasCoordenadas.length > 0) {
-                map.fitBounds(todasLasCoordenadas, { maxZoom: 14, padding: [50, 50] });
+                map.fitBounds(todasLasCoordenadas, { maxZoom: 14 });
             }
         }
     });

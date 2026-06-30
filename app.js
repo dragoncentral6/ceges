@@ -1,24 +1,35 @@
 import { db } from './firebase-config.js';
-import { collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+import { collection, onSnapshot } from "https://gstatic.com";
 
-// Inicializar el Mapa (Centrado por defecto, ej: Colombia)
+// Inicializar el Mapa centrado en Cali
 const map = L.map('map', { zoomControl: false }).setView([3.43722, -76.52250], 13);
 L.control.zoom({ position: 'bottomright' }).addTo(map);
 
-// Capa de mapa (OpenStreetMap)
+// Capa base de OpenStreetMap
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
 }).addTo(map);
 
-// Estructura en memoria para almacenar marcadores y coordenadas actuales
 const marcadores = {};
 const datosGruas = {};
 
-// Conversión utilitaria de Nudos (Traccar) a Km/h
-const nodosAKmh = (knots) => Math.round((knots || 0) * 1.852);
+// Generador de iconos dinámicos usando un SVG vectorial rotable
+const crearIconoGrua = (rumbo) => {
+    return L.divIcon({
+        className: 'icono-grua-contenedor',
+        html: `
+            <svg class="icono-grua-imagen" style="transform: rotate(${rumbo}deg);" viewBox="0 0 24 24" fill="#2563eb" xmlns="http://w3.org">
+                <!-- Icono de camión / grúa de rescate -->
+                <path d="M20 8h-3V4H4c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM7 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0.67 1.5 1.5-.67 1.5-1.5 1.5zm11 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0.67 1.5 1.5-.67 1.5-1.5 1.5zM15 12H4V6h11v6z"/>
+            </svg>
+        `,
+        iconSize:,
+        iconAnchor:,
+        popupAnchor: [0, -16]
+    });
+};
 
-// Escuchar actualizaciones de Firebase en tiempo real
-const gruasRef = collection(db, "gruas"); // Asegúrate de que la colección coincida con la de tu backend (usamos "gruas")
+const gruasRef = collection(db, "gruas"); 
 
 onSnapshot(gruasRef, (snapshot) => {
     const listaContenedor = document.getElementById('lista-gruas');
@@ -29,60 +40,87 @@ onSnapshot(gruasRef, (snapshot) => {
     }
 
     let htmlLista = '';
+    const ahora = new Date();
 
     snapshot.forEach((doc) => {
         const id = doc.id;
         const data = doc.data();
-        const { lat, lng, velocidad, orientacion } = data;
+        const { lat, lng, velocidad, orientacion, ultimaActualizacion } = data;
         
-        // Validar que existan coordenadas antes de procesar
+        // Evitar fallos si faltan coordenadas esenciales
         if (lat === undefined || lng === undefined) return;
 
-        // Guardar en memoria local para interactividad posterior
         datosGruas[id] = { lat, lng };
 
-        const velKmh = Math.round(velocidad || 0)
-        const rumbo = orientacion !== undefined ? `${Math.round(orientacion)}°` : 'N/D';
-        const label = `Grúa #${id}`;
-        const popupTexto = `<div class="leaflet-popup-content-value"><b>${label}</b><br>⚡ Velocidad: ${velKmh} km/h<br>🧭 Orientación: ${rumbo}</div>`;
+        // Procesamiento de marcas de tiempo y alertas por pérdida de señal
+        let fechaTexto = 'Sin reportes';
+        let claseInactiva = '';
+        
+        if (ultimaActualizacion) {
+            const fechaJS = ultimaActualizacion.toDate();
+            
+            // Construcción de cadena de tiempo legible (Ej: 14:32 - 30 jun)
+            fechaTexto = fechaJS.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' }) + 
+                          ' - ' + fechaJS.toLocaleDateString('es-ES', { day: 'numeric', month: 'short' });
 
-        // Construcción acumulativa del HTML de la lista lateral utilizando data-id
-        htmlLista += `
-            <div class="grua-card" data-id="${id}">
-                <h4>${label}</h4>
-                <div class="grua-meta">
-                    <span>⚡ ${velKmh} km/h</span>
-                    <span>🧭 ${rumbo}</span>
-                </div>
+            // Si el diferencial supera los 5 minutos, se gatilla el estado de alerta
+            const diferenciaMinutos = (ahora - fechaJS) / 1000 / 60;
+            if (diferenciaMinutos > 5) {
+                claseInactiva = 'inactiva';
+            }
+        }
+
+        const velKmh = Math.round(velocidad || 0);
+        const rumboGrados = orientacion !== undefined && orientacion !== -1 ? Math.round(orientacion) : 0;
+        const rumboTexto = orientacion !== undefined && orientacion !== -1 ? `${rumboGrados}°` : 'N/D';
+        
+        const label = `Grúa #${id}`;
+        const popupTexto = `
+            <div class="leaflet-popup-content-value">
+                <b>${label}</b><br>
+                ⚡ Velocidad: ${velKmh} km/h<br>
+                🧭 Rumbo: ${rumboTexto}<br>
+                🕒 Último reporte: ${fechaTexto}
             </div>
         `;
 
-        // Si el marcador ya existe en el mapa, actualizar posición y popup
+        // Inyección estructural del HTML de las tarjetas laterales
+        htmlLista += `
+            <div class="grua-card ${claseInactiva}" data-id="${id}">
+                <h4>${label}</h4>
+                <div class="grua-meta">
+                    <span>⚡ ${velKmh} km/h</span>
+                    <span>🧭 ${rumboTexto}</span>
+                </div>
+                <span class="grua-fecha">🕒 Visto: ${fechaTexto}</span>
+            </div>
+        `;
+
+        // Renderizado e instanciación de marcadores dinámicos sobre Leaflet
         if (marcadores[id]) {
             marcadores[id].setLatLng([lat, lng]);
+            marcadores[id].setIcon(crearIconoGrua(rumboGrados));
             marcadores[id].setPopupContent(popupTexto);
         } else {
-            // Si es un dispositivo nuevo, crear marcador e incluirlo en el mapa
-            marcadores[id] = L.marker([lat, lng])
+            marcadores[id] = L.marker([lat, lng], { icon: crearIconoGrua(rumboGrados) })
                 .addTo(map)
                 .bindPopup(popupTexto);
                 
-            // Ajustar automáticamente el zoom del mapa para abarcar todas las grúas la primera vez
+            // Ajustar encuadre general en el mapa al registrar dispositivos iniciales
             const todasLasCoordenadas = Object.values(datosGruas).map(g => [g.lat, g.lng]);
             if (todasLasCoordenadas.length > 0) {
-                map.fitBounds(todasLasCoordenadas, { maxZoom: 14, padding: [50, 50] });
+                map.fitBounds(todasLasCoordenadas, { maxZoom: 14, padding: [40, 40] });
             }
         }
     });
 
-    // Inyectar todo el HTML de golpe para evitar parpadeos visuales
     listaContenedor.innerHTML = htmlLista;
 });
 
-// DELEGACIÓN DE EVENTOS: Escucha clics en la lista lateral de manera segura y dinámica
+// Event Listener delegado para selección e interactividad táctil/clic en tarjetas laterales
 document.getElementById('lista-gruas').addEventListener('click', (e) => {
     const card = e.target.closest('.grua-card');
-    if (!card) return; // Si no hizo clic en una tarjeta, ignorar
+    if (!card) return;
 
     const id = card.getAttribute('data-id');
     const grua = datosGruas[id];

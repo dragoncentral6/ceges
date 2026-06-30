@@ -18,7 +18,7 @@ const datosGruas = {};
 const nodosAKmh = (knots) => Math.round((knots || 0) * 1.852);
 
 // Escuchar actualizaciones de Firebase en tiempo real
-const gruasRef = collection(db, "rules" || "gruas"); // Asegúrate de que la colección coincida con la de tu backend (usamos "gruas")
+const gruasRef = collection(db, "gruas"); // Asegúrate de que la colección coincida con la de tu backend (usamos "gruas")
 
 onSnapshot(gruasRef, (snapshot) => {
     const listaContenedor = document.getElementById('lista-gruas');
@@ -41,7 +41,7 @@ onSnapshot(gruasRef, (snapshot) => {
         // Guardar en memoria local para interactividad posterior
         datosGruas[id] = { lat, lng };
 
-        const velKmh = nodosAKmh(velocidad);
+        const velKmh = Math.round(velocidad || 0)
         const rumbo = orientacion !== undefined ? `${Math.round(orientacion)}°` : 'N/D';
         const label = `Grúa #${id}`;
         const popupTexto = `<div class="leaflet-popup-content-value"><b>${label}</b><br>⚡ Velocidad: ${velKmh} km/h<br>🧭 Orientación: ${rumbo}</div>`;

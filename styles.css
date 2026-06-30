@@ -5,6 +5,8 @@
     --text-muted: #6b7280;
     --accent: #2563eb;
     --accent-light: #eff6ff;
+    --danger: #d9534f;
+    --danger-light: #fff5f5;
 }
 
 * {
@@ -95,6 +97,47 @@ header p {
     display: flex;
     align-items: center;
     gap: 4px;
+}
+
+/* --- NUEVAS MEJORAS DE DISEÑO --- */
+
+/* Formato de la fecha de última actualización */
+.grua-fecha {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    display: block;
+    border-top: 1px dashed var(--border-color);
+    padding-top: 5px;
+}
+
+/* Estado Alerta: Grúa Inactiva (+5 min sin reportar) */
+.grua-card.inactiva {
+    border-left: 4px solid var(--danger) !important;
+    background-color: var(--danger-light);
+    opacity: 0.9;
+}
+
+.grua-card.inactiva h4::after {
+    content: " ⚠️ SIN SEÑAL";
+    color: var(--danger);
+    font-size: 10px;
+    font-weight: bold;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+/* Icono SVG de la Grúa en el mapa */
+.icono-grua-contenedor {
+    background: none;
+    border: none;
+}
+
+.icono-grua-imagen {
+    width: 32px;
+    height: 32px;
+    transition: transform 0.3s ease;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.35));
 }
 
 /* Contenedor del Mapa */

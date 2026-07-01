@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Monitoreo de Grúas | Panel de Control</title>
-    <!-- Leaflet CSS -->
-    <link rel="stylesheet" href="https://unpkg.com" />
+    
+    <!-- CORREGIDO: Ruta completa y oficial al CSS de Leaflet v1.9.4 -->
+    <link rel="stylesheet" href="https://unpkg.com" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    
     <!-- Estilos Independientes -->
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -25,11 +27,11 @@
     <!-- Contenedor del Mapa -->
     <main id="map"></main>
 
-    <!-- Leaflet JS -->
-    <script src="https://unpkg.com"></script>
+    <!-- CORREGIDO: Ruta completa y oficial al archivo JavaScript de Leaflet (Crea la variable 'L') -->
+    <script src="https://unpkg.com" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     
     <!-- Módulos de la Aplicación -->
-    <script type="module" src="firebase-config.js" defer></script>
-    <script type="module" src="app.js" defer></script>
+    <!-- CORREGIDO: Eliminado 'defer' ya que type="module" lo gestiona de forma nativa en el orden correcto -->
+    <script type="module" src="app.js"></script>
 </body>
 </html>

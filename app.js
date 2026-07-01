@@ -14,7 +14,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 //capa de trafico
 L.tileLayer('https://{s}://{z}/{x}/{y}.png?key=TU_API_KEY', {
     maxZoom: 13
-}).addTo(mapa);
+}).addTo(map);
 
 const marcadores = {};
 const datosGruas = {};

@@ -1,5 +1,6 @@
 import { db } from './firebase-config.js';
-import { collection, onSnapshot } from "https://gstatic.com"; // CORREGIDO: Ruta oficial de Firebase
+// CORREGIDO: Sincronizado a la versión 10.8.0 exacta de Firestore
+import { collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js"; 
 
 // Inicializar el Mapa centrado en Cali
 const map = L.map('map', { zoomControl: false }).setView([3.43722, -76.52250], 13);

@@ -13,7 +13,8 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 //capa de trafico
 L.tileLayer('https://{s}://{z}/{x}/{y}.png?key=TU_API_KEY', {
-    maxZoom: 13
+    maxZoom: 18,
+    subdomains: ['a', 'b', 'c', 'd'] // Esto le enseña a Leaflet qué significa la {s}
 }).addTo(map);
 
 const marcadores = {};

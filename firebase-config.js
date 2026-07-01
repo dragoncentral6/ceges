@@ -10,13 +10,9 @@ const firebaseConfig = {
   appId: "1:809437790985:web:5670aa02d4fc7ed02809d8"
 };
 
-// 1. Inicializar la App básica
 const app = initializeApp(firebaseConfig);
-
-// 2. Inicializar Firestore configurando de forma estricta el uso de pestañas estables (Evita el error QUIC)
 const db = initializeFirestore(app, {
-    experimentalForceLongPolling: true, // 👈 Esto fuerza una conexión estable libre de errores de protocolo QUIC
-    
+    experimentalForceLongPolling: true 
 });
 
 export { db };

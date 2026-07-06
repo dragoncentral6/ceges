@@ -214,15 +214,6 @@ body {
     font-weight: bold;
 }
 
-.input-obs-planilla {
-    font-weight: 400;
-    color: #334155;
-    background-color: #f8fafc;
-    border-color: #e2e8f0;
-    text-align: left;
-    padding-left: 6px;
-}
-
 .input-obs-planilla::placeholder {
     color: #cbd5e1;
     font-size: var(--fuente-texto-micro);

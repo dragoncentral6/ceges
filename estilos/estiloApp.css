@@ -136,14 +136,13 @@ body {
 
 .fila-grua-lineal {
     display: grid;
-    /* Columnas compactas ajustadas 
-    grid-template-columns: 43px 75px 75px 1fr 15px;*/
+    /* Columnas compactas ajustadas */
     grid-template-columns: 15px 60px 40px 2fr 15px;
     align-items: center;
     gap: 4px;
     background-color: var(--bg-tarjetas);
-    padding: 0 4px;
-    border-radius: 4px;
+    padding: 0 2px;
+    border-radius: 3px;
     border-bottom: 1px solid var(--borde-suave);
     border-left: 4px solid transparent; 
     height: 20px; 

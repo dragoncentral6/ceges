@@ -194,12 +194,12 @@ body {
 
 .input-obs-planilla {
     width: 100%;
-    height: 20px; 
+    height: 19px; 
     font-size: var(--fuente-planillas); /* Letra más pequeña para los selectores y observaciones */
     font-weight: 700;
     border-radius: 3px;
     border: none;
-    background-color: #ffffff;
+    background-color: transparent;
     color: var(--texto-principal);
     padding: 0 2px;
     outline: none;

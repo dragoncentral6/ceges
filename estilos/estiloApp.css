@@ -204,7 +204,7 @@ body {
     padding: 0 2px;
     outline: none;
     cursor: pointer;
-    text-align: center;
+    text-align: left;
     transition: all 0.2s ease;
     -webkit-appearance: none;
     -moz-appearance: none;

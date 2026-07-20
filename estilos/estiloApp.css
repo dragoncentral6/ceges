@@ -460,6 +460,7 @@ body {
     font-size: 16px; /* Ajuste estricto anti-zoom en iPhone al abrir teclado */
     outline: none;
     text-transform: uppercase;
+    width: 90%;
 }
 
 @media screen and (min-width: 768px) {

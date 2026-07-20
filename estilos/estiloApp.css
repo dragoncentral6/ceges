@@ -402,6 +402,7 @@ body {
     display: flex;
     flex-direction: column;
     box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+   overflow:hidden;
 }
 
 .modal-header {
@@ -439,7 +440,7 @@ body {
 }
 
 .pct-35 { flex: 0 0 35%; }
-.pct-65 { flex: 0 0 65%; }
+.pct-65 { flex: 0 0 45%; }
 
 .form-col label {
     font-size: var(--fuente-texto-micro);

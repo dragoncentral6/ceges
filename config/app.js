@@ -451,7 +451,7 @@ function renderizarTablaGps() {
             <td style="font-weight:700; color:#2563eb;">${gps.id}</td>
             <td>${gps.lat ? gps.lat.toFixed(5) : '--'}, ${gps.lng ? gps.lng.toFixed(5) : '--'}
                 <br>
-                <small style="color:#94a3b8">Hora: ${fechaTexto}</small>
+                <small style="color:#94a3b8">${fechaTexto}</small>
             </td>
             <td>${Math.round(gps.velocidad || 0)} km/h</td>
             <td>${estadoHTML}</td>

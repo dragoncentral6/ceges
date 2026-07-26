@@ -189,10 +189,14 @@ function evaluarAlertasGrua(grua) {
         const diferenciaTiempo = fechaDoc - hoy;
         const diferenciaDias = Math.ceil(diferenciaTiempo / (1000 * 60 * 60 * 24));
 
-        if (diferenciaDias <= 0) {
+        if (diferenciaDias < 0) {
             tipoAlerta = 'vencido';
             documentosDetalle.push(`${nombre}`);
-        } else if (diferenciaDias <= 15 && tipoAlerta !== 'vencido') {
+        } else if (diferenciaDias === 0) {
+            // Es EXACTAMENTE hoy, le quedan horas de vigencia
+            tipoAlerta = 'proximo'; 
+            documentosDetalle.push(`${nombre} (¡Vence HOY!)`);
+        }else if (diferenciaDias <= 15 && tipoAlerta !== 'vencido') {
             tipoAlerta = 'proximo';
             documentosDetalle.push(`${nombre} (${diferenciaDias}d)`);
         }

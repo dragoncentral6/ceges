@@ -439,7 +439,6 @@ function renderizarTablaGps() {
             fechaTexto = fechaJS.toLocaleString('es-ES', { 
                 day: '2-digit',
                 month: '2-digit',
-                year: 'numeric',
                 hour: '2-digit', 
                 minute: '2-digit',
                 hour12: true // Cambia a false si prefieres formato de 24 horas

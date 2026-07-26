@@ -434,7 +434,16 @@ function renderizarTablaGps() {
         let fechaTexto = 'Sin Reportes';
         if (gps.ultimaActualizacion) {
             const fechaJS = gps.ultimaActualizacion.toDate ? gps.ultimaActualizacion.toDate() : new Date(gps.ultimaActualizacion);
-            fechaTexto = fechaJS.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit' });
+            
+            // Cambiamos a toLocaleString para agregar día, mes y año junto a la hora
+            fechaTexto = fechaJS.toLocaleString('es-ES', { 
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric',
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true // Cambia a false si prefieres formato de 24 horas
+            });
         }
 
         const tr = document.createElement('tr');

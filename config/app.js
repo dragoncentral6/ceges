@@ -440,7 +440,10 @@ function renderizarTablaGps() {
         const tr = document.createElement('tr');
         tr.innerHTML = `
             <td style="font-weight:700; color:#2563eb;">${gps.id}</td>
-            <td>${gps.lat ? gps.lat.toFixed(5) : '--'}, ${gps.lng ? gps.lng.toFixed(5) : '--'}<br><small style="color:#94a3b8">Hora: ${fechaTexto}</small></td>
+            <td>${gps.lat ? gps.lat.toFixed(5) : '--'}, ${gps.lng ? gps.lng.toFixed(5) : '--'}
+                <br>
+                <small style="color:#94a3b8">Hora: ${fechaTexto}</small>
+            </td>
             <td>${Math.round(gps.velocidad || 0)} km/h</td>
             <td>${estadoHTML}</td>
             <td style="text-align:center;">

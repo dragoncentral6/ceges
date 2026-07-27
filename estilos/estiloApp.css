@@ -202,7 +202,6 @@ body {
     color: var(--texto-principal);
     padding: 0 2px;
     outline: none;
-    cursor: pointer;
     text-align: left;
     transition: all 0.2s ease;
     -webkit-appearance: none;
@@ -461,6 +460,9 @@ body {
     outline: none;
     text-transform: uppercase;
     width: 90%;
+   -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 @media screen and (min-width: 768px) {

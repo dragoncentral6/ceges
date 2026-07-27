@@ -137,7 +137,7 @@ body {
 .fila-grua-lineal {
     display: grid;
     /* Columnas compactas ajustadas */
-    grid-template-columns: 15px 60px 40px 2fr 15px;
+    grid-template-columns: 20x 60px 40px 2fr 10px;
     align-items: center;
     gap: 4px;
     background-color: var(--bg-tarjetas);

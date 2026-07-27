@@ -134,9 +134,9 @@ body {
 .fila-grua-lineal {
     display: grid;
     /* Columnas compactas ajustadas */
-    grid-template-columns: 20px 60px 40px 2fr 10px;
+    grid-template-columns: 20px 60px 40px 2fr 15px;
     align-items: center;
-    gap: 4px;
+    gap: 5px;
     background-color: var(--bg-tarjetas);
     padding: 0 2px;
     border-radius: 3px;
@@ -146,6 +146,7 @@ body {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
     transition: background-color 0.2s ease;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .fila-grua-lineal:hover {

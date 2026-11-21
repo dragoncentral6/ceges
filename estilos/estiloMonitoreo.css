@@ -58,7 +58,7 @@ body.modo-monitoreo-publico {
 }
 
 .btn-engranaje-admin {
-    background: rgba(255, 255, 255, 0.35);
+    background: rgba(255, 255, 255, 0);
     border: 1px solid rgba(15, 23, 42, 0.12);
     border-radius: 6px;
     width: 32px;
@@ -73,7 +73,7 @@ body.modo-monitoreo-publico {
 }
 
 .btn-engranaje-admin:hover {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(255, 255, 255, 0);
     transform: rotate(25deg);
 }
 

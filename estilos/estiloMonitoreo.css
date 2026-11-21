@@ -74,7 +74,7 @@ body.modo-monitoreo-publico {
 
 .btn-engranaje-admin:hover {
     background: rgba(255, 255, 255, 0);
-    transform: rotate(25deg);
+    transform: rotate(50deg);
 }
 
 /* ==========================================================================

@@ -59,8 +59,7 @@ body.modo-monitoreo-publico {
 
 .btn-engranaje-admin {
     background: rgba(255, 255, 255, 0);
-    border: 1px solid rgba(15, 23, 42, 0.12);
-    border-radius: 6px;
+    border: none;
     width: 32px;
     height: 32px;
     display: flex;

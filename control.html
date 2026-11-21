@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Control & Administración de Grúas </title>
+    <link rel="stylesheet" href="estilos/estiloApp.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+
+    <main class="app-content">
+
+        <section id="vista-visualizar" class="vista active">
+            <div class="contenedor-split-visualizacion">
+                
+                <div class="bloque-mapa">
+                    <div id="map"></div>
+                </div>
+
+                <div class="bloque-planilla">
+                    <div class="header-planilla-compacto header-planilla-con-acciones">
+                        <h1>CONTROL DE GRUAS</h1>
+                        <button type="button" id="btn-cerrar-sesion-admin" class="btn-salir-admin" title="Cerrar sesión y volver a monitoreo" aria-label="Cerrar sesión">
+                            ⏻
+                        </button>
+                    </div>
+
+                    <div class="subnav-planilla" role="tablist" aria-label="Filtro de estado de grúas">
+                        <button type="button" class="subnav-btn active" data-filtro-estado="activos">Activos</button>
+                        <button type="button" class="subnav-btn" data-filtro-estado="inactivos">Inactivos</button>
+                    </div>
+
+                    <div id="contenedor-cards" class="contenedor-filas-lineales"></div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="vista-registro" class="vista">
+            
+            <div class="header-admin-panel">
+                <div class="titulo-seccion">
+                    <h2>PANEL DE CONTROL & ADMINISTRACION</h2>
+                </div>
+                <button type="button" id="btn-abrir-formulario" class="btn-primary btn-abrir-modal">
+                    ➕ GRÚA
+                </button>
+            </div>
+
+            <div class="contenedor-buscador">
+                <input type="text" id="txt-buscar" placeholder="🔍 BUSCAR POR PLACA O ALIAS...">
+            </div>
+
+            <div class="seccion-tabla-admin">
+                <h3>Documentación & Vencimientos</h3>
+                <div class="tabla-contenedor-scroll">
+                    <table class="tabla-admin">
+                        <thead>
+                            <tr>
+                                <th>PLACA</th>
+                                <th>ALIAS</th>
+                                <th>ESTADO</th>
+                                <th>POSICIÓN</th>
+                                <th>VENCIMIENTOS</th>
+                                <th>ACCIONES</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-gruas"></tbody>
+                    </table>
+                </div>
+                <div class="paginacion-controles">
+                    <button type="button" id="btn-prev" class="btn-pag" disabled>ANTERIOR</button>
+                    <span id="info-paginas">Pág. 1 de 1</span>
+                    <button type="button" id="btn-next" class="btn-pag">SIGUIENTE</button>
+                </div>
+            </div>
+
+            <div class="seccion-tabla-admin" style="margin-top: 20px;">
+                <h3>Control Dispositivos GPS</h3>
+                <div class="tabla-contenedor-scroll">
+                    <table class="tabla-admin">
+                        <thead>
+                            <tr>
+                                <th>ID GPS</th>
+                                <th>ÚLTIMA UBICACIÓN</th>
+                                <th>VELOCIDAD</th>
+                                <th>ESTADO RELACIONAL</th>
+                                <th style="text-align:center;">ACCIÓN</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody-gps"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="modal-formulario" class="modal-overlay">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="titulo-formulario">Registrar Nueva Grúa</h2>
+                        <button type="button" id="btn-cerrar-modal-x" class="btn-cerrar-x">&times;</button>
+                    </div>
+                    
+                    <form id="form-grua" class="form-movil-compacto">
+                        <input type="hidden" id="txt-id-edicion">
+                        
+                        <div class="form-row">
+                            <div class="form-col pct-35">
+                                <label for="txt-placa">Placa</label>
+                                <input type="text" id="txt-placa" required placeholder="AAA123">
+                            </div>
+                            <div class="form-col pct-65">
+                                <label for="txt-alias">Alias Operativo</label>
+                                <input type="text" id="txt-alias" required placeholder="Ej: Grúa 1">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label for="select-estado">Estado Inicial</label>
+                                <select id="select-estado">
+                                    <option value="activo">ACTIVO</option>
+                                    <option value="inactivo" selected>INACTIVO</option>
+                                    <option value="recorrido">RECORRIDO</option>
+                                    <option value="operativo">OPERATIVO</option>
+                                </select>
+                            </div>
+                            <div class="form-col">
+                                <label for="select-posicion">Posición Plano</label>
+                                <select id="select-posicion">
+                                    <option value="">--</option>
+                                    <option value="QSY">QSY</option>
+                                    <option value="QAP">QAP</option>
+                                    <option value="ruta">RUTA</option>
+                                    <option value="patios">PATIOS</option>
+                                    <option value="CT">CT</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label for="select-gps-asignado">Dispositivo GPS</label>
+                                <select id="select-gps-asignado"></select>
+                            </div>
+                            <div class="form-col">
+                                <label for="txt-telefono">WhatsApp Conductor</label>
+                                <input type="tel" id="txt-telefono" placeholder="+573000000000">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-col">
+                                <label for="date-soat">Venc. SOAT</label>
+                                <input type="date" id="date-soat">
+                            </div>
+                            <div class="form-col">
+                                <label for="date-poliza">Venc. Póliza</label>
+                                <input type="date" id="date-poliza">
+                            </div>
+                            <div class="form-col">
+                                <label for="date-rtm">Venc. RTM</label>
+                                <input type="date" id="date-rtm">
+                            </div>
+                        </div>
+
+                        <div class="form-col" style="margin-bottom: 12px;">
+                            <label for="txt-observaciones">Observaciones / Horas</label>
+                            <input type="text" id="txt-observaciones" placeholder="Notas operativas...">
+                        </div>
+
+                        <div class="form-acciones">
+                            <button type="submit" id="btn-guardar" class="btn-primary">GUARDAR GRÚA</button>
+                            <button type="button" id="btn-cancelar" class="btn-secondary">CANCELAR</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <nav class="nav-inferior">
+        <button class="nav-btn active" data-target="vista-visualizar">
+            <span class="nav-icon">🗺️</span>
+            <span class="nav-text">Visualizar</span>
+        </button>
+        <button class="nav-btn" data-target="vista-registro">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-text">Registro</span>
+        </button>
+    </nav>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="config/GPS.js"></script>
+    
+    <script type="module" src="config/app.js"></script>
+</body>
+</html>

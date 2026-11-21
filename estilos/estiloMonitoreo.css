@@ -1,0 +1,257 @@
+/* ==========================================================================
+   ESTILOS EXCLUSIVOS - VISTA VISITANTE: MONITOREO DE GRÚAS (index.html)
+   ========================================================================== */
+:root {
+    --bg-principal: #dfdfdf;
+    --bg-tarjetas: #ffffff;
+    --borde-suave: #e2e8f0;
+    --texto-principal: #0f172a;
+    --texto-gris: #64748b;
+    --bg-encabezado: #21c991;
+    --color-inactivo: #ef4444;
+
+    --map-tooltip-font: 11px;
+    --map-tooltip-padding: 4px;
+
+    --fuente-titulos-seccion: 0.95rem;
+    --fuente-texto-normal: 0.75rem;
+    --fuente-texto-micro: 0.58rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body.modo-monitoreo-publico {
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    font-size: var(--fuente-texto-normal);
+}
+
+/* ==========================================================================
+   ENCABEZADO CON TÍTULO Y BOTÓN ENGRANAJE ADMIN
+   ========================================================================== */
+.header-monitoreo {
+    height: 46px;
+    padding: 0 14px;
+    background-color: var(--bg-encabezado);
+    border-bottom: 1px solid var(--borde-suave);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    z-index: 500;
+}
+
+.header-monitoreo h1 {
+    font-size: var(--fuente-titulos-seccion);
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    color: var(--texto-principal);
+}
+
+.btn-engranaje-admin {
+    background: rgba(255, 255, 255, 0.35);
+    border: 1px solid rgba(15, 23, 42, 0.12);
+    border-radius: 6px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    cursor: pointer;
+    color: var(--texto-principal);
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.btn-engranaje-admin:hover {
+    background: rgba(255, 255, 255, 0.75);
+    transform: rotate(25deg);
+}
+
+/* ==========================================================================
+   CONTENEDOR DE MAPA
+   ========================================================================== */
+.bloque-mapa-monitoreo {
+    width: 100%;
+    height: calc(100vh - 46px);
+    position: relative;
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    background-color: #e5e7eb;
+}
+
+/* ==========================================================================
+   MODAL DE LOGIN PARA ADMINISTRADOR
+   ========================================================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.4);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    backdrop-filter: blur(2px);
+}
+
+.modal-overlay.open {
+    display: flex;
+}
+
+.modal-content.modal-login-box {
+    background-color: var(--bg-tarjetas);
+    border: 1px solid var(--borde-suave);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 340px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+.modal-header {
+    padding: 10px 15px;
+    border-bottom: 1px solid var(--borde-suave);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--bg-encabezado);
+}
+
+.modal-header h2 {
+    font-size: var(--fuente-titulos-seccion);
+    font-weight: 800;
+    color: var(--texto-principal);
+}
+
+.btn-cerrar-x {
+    background: none;
+    border: none;
+    color: var(--texto-gris);
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.form-movil-compacto {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--bg-principal);
+}
+
+.form-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-col label {
+    font-size: var(--fuente-texto-micro);
+    font-weight: 700;
+    color: var(--texto-gris);
+    margin-bottom: 3px;
+    text-transform: uppercase;
+}
+
+.form-col input {
+    height: 34px;
+    background-color: #ffffff;
+    border: 1px solid var(--borde-suave);
+    border-radius: 5px;
+    color: var(--texto-principal);
+    padding: 0 8px;
+    font-size: 16px;
+    outline: none;
+}
+
+@media screen and (min-width: 768px) {
+    .form-col input {
+        font-size: var(--fuente-texto-normal);
+    }
+}
+
+.login-error-texto {
+    min-height: 16px;
+    font-size: var(--fuente-texto-micro);
+    font-weight: 700;
+    color: var(--color-inactivo);
+    margin-bottom: 6px;
+}
+
+.form-acciones {
+    margin-top: 6px;
+    display: flex;
+    gap: 8px;
+}
+
+.btn-primary {
+    background-color: #6a94ee;
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    font-size: var(--fuente-texto-normal);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(37, 99, 235, 0.2);
+}
+
+.btn-secondary {
+    background-color: #64748b;
+    color: #ffffff;
+    border: none;
+    font-weight: 700;
+    font-size: var(--fuente-texto-normal);
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   ETIQUETAS Y POPUPS EN LEAFLET
+   ========================================================================== */
+.etiqueta-alias-mapa {
+    background-color: rgba(255, 255, 255, 0.95) !important;
+    border: 1px solid #2563eb !important;
+    color: #0f172a !important;
+    font-weight: 800 !important;
+    text-align: center;
+    border-radius: 4px !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    font-size: var(--map-tooltip-font) !important;
+    padding: var(--map-tooltip-padding) !important;
+}
+
+.leaflet-tooltip-top:before {
+    display: none !important;
+}
+
+.popup-mapa-info h4 {
+    font-size: var(--fuente-texto-normal);
+    margin-bottom: 5px;
+    color: #2563eb;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 2px;
+}
+
+.popup-mapa-info p {
+    font-size: var(--fuente-texto-micro);
+    margin: 2px 0;
+    color: #334155;
+}

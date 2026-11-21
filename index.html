@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoreo de Grúas</title>
+    <link rel="stylesheet" href="estilos/estiloMonitoreo.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="modo-monitoreo-publico">
+
+    <header class="header-monitoreo">
+        <h1>MONITOREO DE GRÚAS</h1>
+        <button type="button" id="btn-abrir-login" class="btn-engranaje-admin" title="Acceso Administrador" aria-label="Acceso Administrador">
+            ⚙️
+        </button>
+    </header>
+
+    <main class="bloque-mapa-monitoreo">
+        <div id="map"></div>
+    </main>
+
+    <!-- Modal de Login para Administrador -->
+    <div id="modal-login-admin" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="titulo-login-admin">
+        <div class="modal-content modal-login-box">
+            <div class="modal-header">
+                <h2 id="titulo-login-admin">Acceso Administrador</h2>
+                <button type="button" id="btn-cerrar-login" class="btn-cerrar-x" aria-label="Cerrar">&times;</button>
+            </div>
+
+            <form id="form-login-admin" class="form-movil-compacto">
+                <div class="form-col" style="margin-bottom: 10px;">
+                    <label for="login-email">Correo electrónico</label>
+                    <input type="email" id="login-email" required autocomplete="username" placeholder="admin@empresa.com" style="text-transform: none; width: 100%;">
+                </div>
+
+                <div class="form-col" style="margin-bottom: 10px;">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" required autocomplete="current-password" placeholder="••••••••" style="text-transform: none; width: 100%;">
+                </div>
+
+                <p id="login-error-msg" class="login-error-texto" role="alert"></p>
+
+                <div class="form-acciones">
+                    <button type="submit" id="btn-submit-login" class="btn-primary" style="flex: 1;">INGRESAR</button>
+                    <button type="button" id="btn-cancelar-login" class="btn-secondary">CANCELAR</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="config/GPS.js"></script>
+    <script type="module" src="config/monitoreo.js"></script>
+</body>
+</html>
